@@ -2,25 +2,91 @@
 <html>
   <head>
     <title>Movember</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    <header>
-    </header>
-    <div class="week-container">
-      <div class="title">Week 1</div>
-      <div class="image-container"><img /></div>
+    <p class="one-liner">When he goes to Spain, he chases the bulls.</p>
+    <p class="one-liner">He is the life of parties that he has never attended.</p>
+    <p class="one-liner">His beard alone has experienced more than a lesser man's entire body.</p>
+    <p class="one-liner">He once turned a vampire into a vegetarian.</p>
+    <p class="one-liner">He is <i>the</i> most interesting man.<br />With a mustache.</p>
+    <div class="skip">Skip</div>
+    <div class="content">
+      <header>
+      <div class="row">
+        <div class="col-md-12">
+          <img width="160" class="img-circle" src="/img/ben.gif" />
+        </div>
+      </div>
+      <h2>"I don't always grow mustaches, but when I do, I prefer to do it for men's health."</h2>
+      </header>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 divider"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 donate-container">
+          <div class="description">Help him raise money as he grows the most interesting mustache for men's health in the month of
+      Movember.</div>
+          <a href="https://www.movember.com/ch/en/donate/payment/member_id/7100269/" type="button" class="btn btn-default donate">Donate</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="week-container col-md-3">
+          <div class="title">After One Week</div>
+          <div class="image-container">
+            <img width="100%" class="img-circle" src="/img/unknown.png/" />
+          </div>
+        </div>
+        <div class="week-container col-md-3">
+          <div class="title">After Two Weeks</div>
+          <div class="image-container">
+            <img width="100%" class="img-circle" src="/img/unknown.png/" />
+          </div>
+        </div>
+        <div class="week-container col-md-3">
+          <div class="title">After Three Weeks</div>
+          <div class="image-container">
+            <img width="100%" class="img-circle" src="/img/unknown.png/" />
+          </div>
+        </div>
+        <div class="week-container col-md-3">
+          <div class="title">After Four Weeks</div>
+          <div class="image-container">
+            <img width="100%" class="img-circle" src="/img/unknown.png/" />
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="week-container">
-      <div class="title">Week 2</div>
-      <div class="image-container"><img /></div>
-    </div>
-    <div class="week-container">
-      <div class="title">Week 3</div>
-      <div class="image-container"><img /></div>
-    </div>
-    <div class="week-container">
-      <div class="title">Week 4</div>
-      <div class="image-container"><img /></div>
-    </div>
+    <script src="/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var $lines = $(".one-liner");
+        var idx = -1;
+
+        function showNextQuote() {
+            ++idx;
+            if (idx >= $lines.length) {
+              $('.content').css('display', 'inherit');
+              $('.skip').css('display', 'none');
+              return;
+            }
+            $lines.eq(idx)
+                .fadeIn(2000)
+                .delay(1000)
+                .fadeOut(2000, showNextQuote);
+        }
+
+        showNextQuote();
+
+        $('.skip').click(function() {
+          $lines.remove();
+          $('.content').css('display', 'inherit');
+              $('.skip').css('display', 'none');
+        });
+
+      });
+
+    </script>
   </body>
 </html>
